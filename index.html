@@ -5157,7 +5157,7 @@ document.addEventListener('DOMContentLoaded', function(){ initNewSections(); });
 document.addEventListener('click', function(e){
   var t=e.target; if(!t||!t.dataset||!t.dataset.target) return;
   var tgt=t.dataset.target;
-  else if(tgt==='s28') { csInit(); }
+  if(tgt==='s28') { csInit(); }
   else if(tgt==='s29') { scRender(); }
   else if(tgt==='s30') { rtRender(); setTimeout(function(){ apDrawCraftChart([]); },100); }
   else if(tgt==='s31') {
