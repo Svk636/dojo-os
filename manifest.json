@@ -1,0 +1,43 @@
+{
+  "name": "DOJO OS",
+  "short_name": "DOJO OS",
+  "description": "Hollywood Performance OS — 90-Day Acting & Combat Protocol",
+  "start_url": "./dojo_os_v1.html",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "fullscreen"],
+  "background_color": "#090909",
+  "theme_color": "#c9a84c",
+  "orientation": "portrait-primary",
+  "lang": "en-US",
+  "icons": [
+    {
+      "src": "./icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Today's Flow",
+      "short_name": "Flow",
+      "url": "./dojo_os_v1.html",
+      "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ],
+  "prefer_related_applications": false,
+  "categories": ["productivity", "health", "lifestyle"]
+}
