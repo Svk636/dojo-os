@@ -1,40 +1,85 @@
-const CACHE_NAME = 'dojo-os-v12';
-const ASSETS = [
+/* ═══════════════════════════════════════════════════════
+   DOJO OS — Service Worker v1
+   GitHub Pages production SW
+   Strategy:
+     - HTML (index / dojo_os_v1.html) → network-first, cache fallback
+     - All other GET → cache-first, network update in background
+   ═══════════════════════════════════════════════════════ */
+
+const CACHE     = 'dojo-os-v1';
+const APP_SHELL = [
   './',
   './index.html',
-  'https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600;700&display=swap'
+  './dojo_os_v1.html',
 ];
 
-self.addEventListener('install', function(e) {
+/* ── INSTALL: pre-cache app shell ── */
+self.addEventListener('install', e => {
   e.waitUntil(
-    caches.open(CACHE_NAME).then(function(cache) {
-      return cache.addAll(ASSETS).catch(function(){});
-    })
+    caches.open(CACHE)
+      .then(c => c.addAll(APP_SHELL).catch(() => {}))
+      .then(() => self.skipWaiting())
   );
-  self.skipWaiting();
 });
 
-self.addEventListener('activate', function(e) {
+/* ── ACTIVATE: purge old caches ── */
+self.addEventListener('activate', e => {
   e.waitUntil(
-    caches.keys().then(function(keys) {
-      return Promise.all(keys.filter(function(k){ return k !== CACHE_NAME; }).map(function(k){ return caches.delete(k); }));
-    })
+    caches.keys()
+      .then(keys => Promise.all(
+        keys.filter(k => k !== CACHE).map(k => caches.delete(k))
+      ))
+      .then(() => self.clients.claim())
   );
-  self.clients.claim();
 });
 
-self.addEventListener('fetch', function(e) {
+/* ── FETCH ── */
+self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
+
+  const url = new URL(e.request.url);
+
+  /* Skip cross-origin (CDN fonts, etc.) — browser handles those */
+  if (url.origin !== self.location.origin) return;
+
+  /* HTML pages → network-first so updates land immediately */
+  const isNav = e.request.mode === 'navigate' ||
+    url.pathname.endsWith('.html') ||
+    url.pathname === '/' ||
+    url.pathname.endsWith('/');
+
+  if (isNav) {
+    e.respondWith(
+      fetch(e.request)
+        .then(r => {
+          if (r && r.ok) {
+            const clone = r.clone();
+            caches.open(CACHE).then(c => c.put(e.request, clone));
+          }
+          return r;
+        })
+        .catch(() =>
+          caches.match(e.request)
+            .then(cached => cached || caches.match('./dojo_os_v1.html'))
+        )
+    );
+    return;
+  }
+
+  /* Everything else → cache-first, refresh in background */
   e.respondWith(
-    caches.match(e.request).then(function(cached) {
-      if (cached) return cached;
-      return fetch(e.request).then(function(resp) {
-        if (!resp || resp.status !== 200 || resp.type === 'opaque') return resp;
-        var clone = resp.clone();
-        caches.open(CACHE_NAME).then(function(cache){ cache.put(e.request, clone); });
-        return resp;
-      }).catch(function() {
-        return caches.match('./index.html');
+    caches.match(e.request).then(cached => {
+      const net = fetch(e.request).then(r => {
+        if (r && r.ok && r.type === 'basic') {
+          const clone = r.clone();
+          caches.open(CACHE).then(c => c.put(e.request, clone));
+        }
+        return r;
+      }).catch(() => null);
+
+      return cached || net || new Response('Offline', {
+        status: 503,
+        headers: { 'Content-Type': 'text/plain' }
       });
     })
   );
