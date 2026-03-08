@@ -1,74 +1,97 @@
-/* ═══════════════════════════════════════════════════
-   DOJO OS — Service Worker
+/* ═══════════════════════════════════════════════════════
+   DOJO OS — Service Worker  v1
    Cache: dojo-os-v1
+   
    Strategy:
-     · HTML  → network-first (get updates), cache fallback
-     · Other → cache-first, refresh in background
-═══════════════════════════════════════════════════ */
+   · HTML / navigate  → network-first (live updates)
+   · Everything else  → cache-first + background refresh
+   · Cross-origin     → skip (fonts, etc. handle themselves)
+═══════════════════════════════════════════════════════ */
 
-const CACHE = 'dojo-os-v1';
-const SHELL = [
+const CACHE   = 'dojo-os-v1';
+const PRECACHE = [
   './dojo_os_v1.html',
-  './manifest.json'
+  './manifest.json',
+  './icons/icon.svg',
+  './icons/icon-192.png',
+  './icons/icon-512.png'
 ];
 
-/* INSTALL */
-self.addEventListener('install', e => {
+/* ── INSTALL ─────────────────────────────────────────── */
+self.addEventListener('install', function(e) {
   e.waitUntil(
     caches.open(CACHE)
-      .then(c => c.addAll(SHELL).catch(() => {}))
-      .then(() => self.skipWaiting())
+      .then(function(c) {
+        return Promise.all(
+          PRECACHE.map(function(url) {
+            return c.add(url).catch(function() {
+              /* skip if a file is missing — don't block install */
+            });
+          })
+        );
+      })
+      .then(function() { return self.skipWaiting(); })
   );
 });
 
-/* ACTIVATE — delete old caches */
-self.addEventListener('activate', e => {
+/* ── ACTIVATE ────────────────────────────────────────── */
+self.addEventListener('activate', function(e) {
   e.waitUntil(
     caches.keys()
-      .then(keys => Promise.all(
-        keys.filter(k => k !== CACHE).map(k => caches.delete(k))
-      ))
-      .then(() => self.clients.claim())
+      .then(function(keys) {
+        return Promise.all(
+          keys
+            .filter(function(k) { return k !== CACHE; })
+            .map(function(k) { return caches.delete(k); })
+        );
+      })
+      .then(function() { return self.clients.claim(); })
   );
 });
 
-/* FETCH */
-self.addEventListener('fetch', e => {
-  if (e.request.method !== 'GET') return;
+/* ── FETCH ───────────────────────────────────────────── */
+self.addEventListener('fetch', function(e) {
+  var req = e.request;
 
-  const url = new URL(e.request.url);
-  if (url.origin !== self.location.origin) return;
+  /* Only handle GET */
+  if (req.method !== 'GET') return;
 
-  const isHTML = e.request.mode === 'navigate'
-    || url.pathname.endsWith('.html')
-    || url.pathname.endsWith('/');
+  /* Skip cross-origin (Google Fonts, CDN, etc.) */
+  if (!req.url.startsWith(self.location.origin)) return;
 
-  if (isHTML) {
-    /* Network-first for HTML so updates land immediately */
+  var isNav = req.mode === 'navigate'
+    || req.headers.get('accept').indexOf('text/html') > -1;
+
+  if (isNav) {
+    /* Network-first for HTML — always get latest version */
     e.respondWith(
-      fetch(e.request)
-        .then(r => {
-          if (r && r.ok) {
-            caches.open(CACHE).then(c => c.put(e.request, r.clone()));
+      fetch(req)
+        .then(function(res) {
+          if (res && res.ok) {
+            caches.open(CACHE).then(function(c) { c.put(req, res.clone()); });
           }
-          return r;
+          return res;
         })
-        .catch(() =>
-          caches.match(e.request)
-            .then(cached => cached || caches.match('./dojo_os_v1.html'))
-        )
+        .catch(function() {
+          return caches.match(req)
+            .then(function(cached) {
+              return cached || caches.match('./dojo_os_v1.html');
+            });
+        })
     );
   } else {
-    /* Cache-first for everything else */
+    /* Cache-first for assets */
     e.respondWith(
-      caches.match(e.request).then(cached => {
-        const net = fetch(e.request).then(r => {
-          if (r && r.ok && r.type === 'basic') {
-            caches.open(CACHE).then(c => c.put(e.request, r.clone()));
+      caches.match(req).then(function(cached) {
+        /* Kick off a background network fetch to refresh */
+        var netFetch = fetch(req).then(function(res) {
+          if (res && res.ok && res.type === 'basic') {
+            caches.open(CACHE).then(function(c) { c.put(req, res.clone()); });
           }
-          return r;
-        }).catch(() => null);
-        return cached || net;
+          return res;
+        }).catch(function() { return null; });
+
+        return cached || netFetch;
       })
     );
   }
