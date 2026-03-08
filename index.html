@@ -14,6 +14,7 @@
 <title>DOJO OS v1 — Hollywood Protocol</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 <!-- manifest injected by JS -->
+  <link rel="manifest" href="./manifest.json">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -2117,9 +2118,8 @@ if ('serviceWorker' in navigator) {
               cache.add(window.location.href).catch(function(){});
             });
           }
-        })
-        .catch(function(e){ console.warn('[DOJO OS] SW failed (blob):',e); });
-    } catch(e){ console.warn('[DOJO OS] SW blob error',e); }
+        });
+    } catch(e){ /* SW blob registration failed */ }
       }); // end catch for external
   });
 }
@@ -3526,7 +3526,27 @@ function initV1(){
   setInterval(tfHighlightActive, 60000);
 }
 
-initV1();
+  window.delDirective    = delDirective;
+  window.updDirective    = updDirective;
+  window.openFocus       = openFocus;
+  window.closeFocus      = closeFocus;
+  window.openFocusBlock  = openFocusBlock;
+  window.openZen         = openZen;
+  window.closeZen        = closeZen;
+  window.cycleDay        = cycleDay;
+  window.setSat          = setSat;
+  window.calcScorecard   = calcScorecard;
+  window.toggleVision    = toggleVision;
+  window.openCycleDetail = openCycleDetail;
+  window.toggleV15Year   = toggleV15Year;
+  window.closeCycleDetail= closeCycleDetail;
+  window.renderV15       = renderV15;
+  window.saveD           = saveD;
+  window.showToast       = showToast;
+  window.D_ref           = function(){ return D; }; /* expose D for v15_start oninput */
+  window.D               = D;  /* expose for CCC/external scripts */
+
+  initV1();
 
 
 /* ════════════════════════════════════════════════════════
@@ -3852,26 +3872,6 @@ function hfoSetScore(v) {
   window.addCareerEntry  = addCareerEntry;
   window.delCareer       = delCareer;
   window.addDirective    = addDirective;
-  window.delDirective    = delDirective;
-  window.updDirective    = updDirective;
-  window.openFocus       = openFocus;
-  window.closeFocus      = closeFocus;
-  window.openFocusBlock  = openFocusBlock;
-  window.openZen         = openZen;
-  window.closeZen        = closeZen;
-  window.cycleDay        = cycleDay;
-  window.setSat          = setSat;
-  window.calcScorecard   = calcScorecard;
-  window.toggleVision    = toggleVision;
-  window.openCycleDetail = openCycleDetail;
-  window.toggleV15Year   = toggleV15Year;
-  window.closeCycleDetail= closeCycleDetail;
-  window.renderV15       = renderV15;
-  window.saveD           = saveD;
-  window.showToast       = showToast;
-  window.D_ref           = function(){ return D; }; /* expose D for v15_start oninput */
-  window.D               = D;  /* expose for CCC/external scripts */
-
 })();
 
 /* ══════════════════════════════════════════════════════
@@ -4262,7 +4262,7 @@ window.exportJSON=exportJSON; window.exportCSV=exportCSV; window.exportPDF=expor
 
 <script>
 /* showToast — uses main script's exposed version */
-var showToast = window.showToast || function(m){ console.warn(m); };
+var showToast = window.showToast || function(m){ /* no-op fallback */ };
 
 /* ══════════════════════════════════════════════════════
    CAREER COMMAND CENTER — v1 JS
@@ -4276,7 +4276,7 @@ function fabToggle(){
   var btn = document.getElementById('fab-main');
   if(overlay){ overlay.classList.toggle('open', _fabOpen); }
   if(btn){ btn.textContent = _fabOpen ? '✕' : '⚡'; btn.style.background = _fabOpen ? 'var(--red)' : 'var(--gold)'; }
-  if(_fabOpen){ cccInit(); }
+  if(_fabOpen){ try{ cccInit(); }catch(e){ /* CCC init error — overlay still shows */ } }
 }
 function cccClose(){
   _fabOpen = false;
