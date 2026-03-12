@@ -13,6 +13,6 @@
 */
 
 window.DOJO_CONFIG = {
-  supabaseUrl: 'https://YOUR_PROJECT_REF.supabase.co',
-  supabaseKey: 'YOUR_ANON_KEY_HERE'
+  supabaseUrl: 'https://bvqvuhxkwcaevyknrojs.supabase.co',
+  supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ2cXZ1aHhrd2NhZXZ5a25yb2pzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMzNDQ3MTAsImV4cCI6MjA4ODkyMDcxMH0.jnhBUNohmS46LnGOVwZRhKW6RG0J-QMt897VTckpoGM'
 };
