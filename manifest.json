@@ -1,0 +1,88 @@
+{
+  "name": "DOJO OS — Hollywood Protocol",
+  "short_name": "DOJO OS",
+  "description": "Hollywood Martial Arts Icon Protocol — 90-Day Performance Operating System",
+  "start_url": "./dojo_os_v3.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#090909",
+  "theme_color": "#c9a84c",
+  "lang": "en",
+  "categories": ["productivity", "health", "fitness"],
+  "icons": [
+    {
+      "src": "./icons/icon-72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icons/icon-384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Today's Flow",
+      "short_name": "Today",
+      "description": "Jump to Today's Flow section",
+      "url": "./dojo_os_v3.html#s21",
+      "icons": [{ "src": "./icons/icon-96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Daily Habits",
+      "short_name": "Habits",
+      "description": "Log today's habit blocks",
+      "url": "./dojo_os_v3.html#s4",
+      "icons": [{ "src": "./icons/icon-96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Reflection",
+      "short_name": "Reflect",
+      "description": "Evening reflection & night close",
+      "url": "./dojo_os_v3.html#s8",
+      "icons": [{ "src": "./icons/icon-96.png", "sizes": "96x96" }]
+    }
+  ],
+  "screenshots": [],
+  "prefer_related_applications": false
+}
