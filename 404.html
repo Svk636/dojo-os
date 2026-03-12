@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOJO OS</title>
+  <meta http-equiv="refresh" content="0; url=./dojo_os_v1.html">
+  <link rel="manifest" href="./manifest.json">
+  <meta name="theme-color" content="#c9a84c">
+  <style>
+    * { margin:0; padding:0; }
+    body { background:#090909; color:#c9a84c; font-family:'Courier New',monospace;
+           display:flex; align-items:center; justify-content:center;
+           min-height:100vh; letter-spacing:3px; font-size:10px; }
+  </style>
+</head>
+<body>
+  <div>REDIRECTING TO DOJO OS...</div>
+  <script>
+    // Preserve any hash fragment
+    var dest = './dojo_os_v1.html' + (window.location.hash || '');
+    window.location.replace(dest);
+  </script>
+</body>
+</html>
