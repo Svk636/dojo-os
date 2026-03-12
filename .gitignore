@@ -1,0 +1,13 @@
+# DOJO OS — .gitignore
+#
+# If your GitHub repo is PUBLIC, config.js contains your
+# Supabase anon key. Add it here to prevent accidental commits.
+#
+# The anon key is low-risk by design (RLS protects all data),
+# but best practice is to keep it out of public version control.
+
+config.js
+
+# OS files
+.DS_Store
+Thumbs.db
