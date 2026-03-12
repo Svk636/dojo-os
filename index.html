@@ -1008,57 +1008,80 @@ select.ccc-input{padding:4px 2px;cursor:pointer}
   <div class="pwa-box">
     <div class="pwa-logo">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-        <!-- Background -->
-        <rect width="512" height="512" fill="#090909" rx="80"/>
-        <rect x="3" y="3" width="506" height="506" rx="78" fill="none" stroke="#7a5c1e" stroke-width="3" opacity="0.7"/>
-        <!-- Head — no face -->
-        <ellipse cx="256" cy="88" rx="30" ry="34" fill="#c9a84c"/>
-        <!-- Neck -->
-        <rect x="247" y="118" width="18" height="22" fill="#c9a84c"/>
-        <!-- Torso — gi trapezoid -->
-        <polygon points="176,138 336,138 352,268 160,268" fill="#c9a84c"/>
-        <!-- Gi collar V -->
-        <polygon points="256,148 238,190 274,190" fill="#7a5c1e"/>
-        <!-- Centre seam -->
-        <line x1="256" y1="190" x2="256" y2="268" stroke="#7a5c1e" stroke-width="3"/>
-        <!-- BLACK BELT -->
-        <rect x="154" y="248" width="204" height="22" fill="#12060200" rx="0"/>
-        <rect x="154" y="248" width="204" height="22" fill="#120602"/>
-        <rect x="154" y="248" width="204" height="3" fill="#2c1a08"/>
-        <rect x="154" y="267" width="204" height="3" fill="#2c1a08"/>
-        <!-- Belt knot -->
-        <rect x="234" y="244" width="44" height="30" rx="4" fill="#2c1a08"/>
-        <rect x="238" y="248" width="36" height="22" rx="3" fill="#120602"/>
-        <!-- Gold tip on belt -->
-        <rect x="322" y="252" width="22" height="14" fill="#c9a84c"/>
-        <!-- LEFT ARM — jodan uke (high block) -->
-        <!-- upper arm -->
-        <polygon points="180,152 196,148 148,74 132,80" fill="#c9a84c"/>
-        <circle cx="140" cy="77" r="14" fill="#c9a84c"/>
-        <!-- forearm angled up -->
-        <polygon points="140,77 154,71 178,135 164,141" fill="#c9a84c"/>
-        <!-- fist -->
-        <ellipse cx="171" cy="138" rx="13" ry="12" fill="#f0c060"/>
-        <!-- RIGHT ARM — gyaku-zuki extended punch -->
-        <polygon points="336,158 322,152 418,168 424,176" fill="#7a5c1e"/>
-        <ellipse cx="421" cy="172" rx="15" ry="12" fill="#7a5c1e"/>
-        <!-- Speed lines -->
-        <line x1="330" y1="160" x2="300" y2="160" stroke="#7a5c1e" stroke-width="3" opacity="0.6"/>
-        <line x1="330" y1="168" x2="294" y2="168" stroke="#7a5c1e" stroke-width="2" opacity="0.4"/>
-        <line x1="330" y1="176" x2="300" y2="176" stroke="#7a5c1e" stroke-width="2" opacity="0.3"/>
-        <!-- LEFT LEG — front bent (zenkutsu) -->
-        <polygon points="220,270 242,270 228,358 206,358" fill="#c9a84c"/>
-        <polygon points="217,356 229,356 213,444 201,440" fill="#c9a84c"/>
-        <ellipse cx="207" cy="442" rx="26" ry="11" fill="#c9a84c"/>
-        <!-- RIGHT LEG — back straight -->
-        <polygon points="270,270 292,270 308,354 286,358" fill="#7a5c1e"/>
-        <polygon points="287,356 309,352 320,440 298,444" fill="#7a5c1e"/>
-        <ellipse cx="309" cy="442" rx="26" ry="11" fill="#7a5c1e"/>
-        <!-- DOJO text -->
-        <text x="256" y="494" font-family="Georgia,serif" font-size="52" font-weight="900" fill="#c9a84c" text-anchor="middle" letter-spacing="6">DOJO</text>
-        <!-- thin rule -->
-        <rect x="140" y="462" width="232" height="1" fill="#7a5c1e" opacity="0.7"/>
-      </svg>
+  <!-- Background -->
+  <rect width="512" height="512" fill="#090909" rx="80"/>
+  <rect x="4" y="4" width="504" height="504" rx="76" fill="none" stroke="#7a5c1e" stroke-width="2.5" opacity="0.8"/>
+
+  <!-- Inner subtle glow border -->
+  <rect x="12" y="12" width="488" height="488" rx="70" fill="none" stroke="#c9a84c" stroke-width="0.8" opacity="0.2"/>
+
+  <!-- HEAD -->
+  <ellipse cx="256" cy="82" rx="32" ry="36" fill="#c9a84c"/>
+
+  <!-- NECK -->
+  <rect x="246" y="114" width="20" height="20" rx="3" fill="#c9a84c"/>
+
+  <!-- TORSO — gi shape -->
+  <polygon points="172,132 340,132 356,272 156,272" fill="#c9a84c"/>
+
+  <!-- GI lapels -->
+  <polygon points="256,142 230,200 256,196" fill="#6b4f18"/>
+  <polygon points="256,142 282,200 256,196" fill="#7a5c1e"/>
+
+  <!-- Centre seam -->
+  <line x1="256" y1="196" x2="256" y2="272" stroke="#5a3e10" stroke-width="2.5"/>
+
+  <!-- BLACK BELT -->
+  <rect x="150" y="252" width="212" height="24" rx="2" fill="#0e0503"/>
+  <rect x="150" y="252" width="212" height="2" fill="#241208"/>
+  <rect x="150" y="274" width="212" height="2" fill="#241208"/>
+
+  <!-- Belt knot centre -->
+  <rect x="232" y="248" width="48" height="32" rx="5" fill="#1a0a04"/>
+  <rect x="237" y="252" width="38" height="24" rx="3" fill="#0e0503"/>
+
+  <!-- Gold rank tip on belt -->
+  <rect x="320" y="256" width="24" height="12" rx="2" fill="#c9a84c"/>
+  <rect x="320" y="258" width="24" height="1" fill="#8a6020" opacity="0.6"/>
+
+  <!-- LEFT ARM — jodan uke high block raised -->
+  <!-- upper arm -->
+  <polygon points="177,146 196,140 136,58 117,66" fill="#c9a84c"/>
+  <!-- elbow joint -->
+  <circle cx="127" cy="62" r="16" fill="#c9a84c"/>
+  <!-- forearm -->
+  <polygon points="127,62 148,55 178,134 158,142" fill="#b8922e"/>
+  <!-- fist -->
+  <ellipse cx="168" cy="138" rx="16" ry="14" fill="#d4a040"/>
+
+  <!-- RIGHT ARM — gyaku-zuki straight punch -->
+  <!-- upper arm -->
+  <polygon points="335,150 318,144 395,156 402,168" fill="#6b4f18"/>
+  <!-- fist -->
+  <ellipse cx="420" cy="166" rx="18" ry="13" fill="#7a5c1e"/>
+  <!-- Speed lines from punch -->
+  <line x1="336" y1="152" x2="298" y2="152" stroke="#c9a84c" stroke-width="3" opacity="0.5"/>
+  <line x1="340" y1="161" x2="296" y2="161" stroke="#c9a84c" stroke-width="2" opacity="0.35"/>
+  <line x1="338" y1="170" x2="300" y2="170" stroke="#c9a84c" stroke-width="1.5" opacity="0.2"/>
+
+  <!-- LEFT LEG — zenkutsu dachi front bent -->
+  <polygon points="214,272 238,272 222,370 198,370" fill="#c9a84c"/>
+  <polygon points="196,368 224,368 208,458 182,452" fill="#b8922e"/>
+  <!-- front foot -->
+  <ellipse cx="195" cy="455" rx="30" ry="12" fill="#c9a84c"/>
+
+  <!-- RIGHT LEG — back straight -->
+  <polygon points="268,272 294,272 310,364 286,368" fill="#6b4f18"/>
+  <polygon points="283,364 312,360 324,452 296,458" fill="#6b4f18"/>
+  <!-- back foot -->
+  <ellipse cx="310" cy="455" rx="30" ry="12" fill="#7a5c1e"/>
+
+  <!-- Thin separator line above text -->
+  <rect x="120" y="470" width="272" height="1" fill="#7a5c1e" opacity="0.9"/>
+
+  <!-- DOJO text -->
+  <text x="256" y="500" font-family="Georgia,serif" font-size="48" font-weight="900" fill="#c9a84c" text-anchor="middle" letter-spacing="8">DOJO</text>
+</svg>
     </div>
     <div class="pwa-name">DOJO OS</div>
     <div class="pwa-tagline">HOLLYWOOD PROTOCOL · v3.0</div>
@@ -7119,30 +7142,330 @@ document.addEventListener('DOMContentLoaded', function(){
   </div>
 </div>
 
-<!-- CLOUD SYNC — load order matters: config → SDK → sync module -->
-<!-- config.js holds your Supabase URL + anon key. Add to .gitignore if repo is public -->
-<script src="config.js" onerror="console.warn('[DOJO] config.js not found — cloud sync disabled')"></script>
-<!--
-  SECURITY: Subresource Integrity (SRI) on the Supabase CDN script.
-  The integrity hash pins this script to an exact byte-for-byte version.
-  If jsDelivr serves a different file (compromised CDN, version change,
-  supply chain attack), the browser BLOCKS execution entirely.
+<!-- ═══════════════════════════════════════════════════════════
+     CLOUD SYNC — fully self-contained, no external files needed
+     Supabase SDK loaded dynamically; credentials entered in-app
+     ═══════════════════════════════════════════════════════════ -->
+<script>
+(function(){
+'use strict';
 
-  Version pinned: @supabase/supabase-js@2.39.3
-  If you upgrade the version, regenerate the hash with:
-    curl -s https://cdn.jsdelivr.net/npm/@supabase/supabase-js@NEW_VERSION/dist/umd/supabase.min.js \
-      | openssl dgst -sha384 -binary | openssl base64 -A
-  Then replace the sha384-... value below.
+/* ── CONFIG STORE ────────────────────────────────────────────────
+   Credentials are saved to localStorage under 'dojo_config'.
+   No config.js file needed. User enters them once in the banner. */
+var CFG_KEY = 'dojo_config';
 
-  crossorigin="anonymous" is required for SRI to work on cross-origin scripts.
--->
-<script
-  src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.3/dist/umd/supabase.min.js"
-  integrity="sha384-OLBgp1GsljhM2TJ+sbHjaiH9txEUvgdDTAzHv2P24donTt6/529l+9Ua0vFImLlb"
-  crossorigin="anonymous"
-  onerror="console.error('[DOJO] Supabase SDK blocked or failed to load — SRI mismatch or network error. Cloud sync disabled.')">
+function loadCfg(){
+  try{ return JSON.parse(localStorage.getItem(CFG_KEY)||'{}'); }catch(e){ return {}; }
+}
+function saveCfg(url, key){
+  try{ localStorage.setItem(CFG_KEY, JSON.stringify({supabaseUrl:url, supabaseKey:key})); }catch(e){}
+}
+function clearCfg(){
+  try{ localStorage.removeItem(CFG_KEY); }catch(e){}
+}
+
+/* ── CONSTANTS ──────────────────────────────────────────────────── */
+var SYNC_KEYS = [
+  'dojo_v1','dojo_tf_v1','dojo_bm_v1','dojo_phys_v1',
+  'dojo_craft_scores','dojo_scenes','dojo_tapes',
+  'dojo_contacts','dojo_events','dojo_reel_notes',
+  'dojo_tl_tasks_v1','dojo_h30_v1','dojo_history_v1'
+];
+var OFFLINE_QUEUE_KEY = 'dojo_sync_queue';
+var SDK_URL = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.3/dist/umd/supabase.min.js';
+
+/* ── STATE ──────────────────────────────────────────────────────── */
+var _sb         = null;
+var _session    = null;
+var _isCoach    = false;
+var _syncActive = false;
+var _originals  = {};
+
+/* ── SDK LOADER ─────────────────────────────────────────────────── */
+function _loadSDK(cb){
+  if(window.supabase){ cb(null); return; }
+  var s = document.createElement('script');
+  s.src = SDK_URL;
+  s.onload  = function(){ cb(null); };
+  s.onerror = function(){ cb(new Error('Supabase SDK failed to load. Check your internet connection.')); };
+  document.head.appendChild(s);
+}
+
+/* ── INIT ───────────────────────────────────────────────────────── */
+function init(){
+  var cfg = loadCfg();
+  if(!cfg.supabaseUrl || !cfg.supabaseKey){
+    _renderSetupUI();
+    return;
+  }
+  _loadSDK(function(err){
+    if(err){ _renderErrorUI(err.message); return; }
+    _startSync(cfg.supabaseUrl, cfg.supabaseKey);
+  });
+}
+
+function _startSync(url, key){
+  var urlPattern = /^https:\/\/[a-z0-9-]+\.supabase\.co$/;
+  if(!urlPattern.test(url)){
+    _renderErrorUI('Invalid Supabase URL. Must be: https://xxxx.supabase.co');
+    return;
+  }
+  _sb = window.supabase.createClient(url, key, {
+    auth:{ persistSession:true, autoRefreshToken:true, detectSessionInUrl:true }
+  });
+  _sb.auth.onAuthStateChange(function(event, session){
+    _session = session;
+    if(event==='SIGNED_IN'||event==='TOKEN_REFRESHED'){ _onSignedIn(session); }
+    else if(event==='SIGNED_OUT'){ _onSignedOut(); }
+  });
+  _sb.auth.getSession().then(function(r){
+    if(r.data&&r.data.session){ _session=r.data.session; _onSignedIn(r.data.session); }
+    else{ _renderAuthUI('logged-out'); }
+  });
+  window.addEventListener('online', _flushOfflineQueue);
+}
+
+/* ── AUTH HANDLERS ──────────────────────────────────────────────── */
+function _onSignedIn(session){
+  _detectCoachRole(session).then(function(isCoach){
+    _isCoach = isCoach;
+    _renderAuthUI('logged-in');
+    if(_isCoach){
+      _pullCoachView();
+    } else {
+      _pullAll().then(function(){ _flushOfflineQueue(); _patchSaveFunctions(); });
+    }
+  });
+}
+function _onSignedOut(){
+  _isCoach=false; _syncActive=false;
+  _renderAuthUI('logged-out');
+  _unpatchSaveFunctions();
+}
+
+/* ── COACH DETECTION ────────────────────────────────────────────── */
+function _detectCoachRole(session){
+  return _sb.from('dojo_sync').select('id')
+    .eq('user_id',session.user.id).eq('data_key','dojo_v1').maybeSingle()
+    .then(function(r){ return r.data===null; })
+    .catch(function(){ return false; });
+}
+
+/* ── PULL ───────────────────────────────────────────────────────── */
+function _pullAll(){
+  if(!_session) return Promise.resolve();
+  return _sb.from('dojo_sync').select('data_key,data_value,updated_at')
+    .eq('user_id',_session.user.id)
+    .then(function(r){
+      if(r.error){ _log('error','Pull failed:',r.error.message); return; }
+      (r.data||[]).forEach(function(row){
+        if(SYNC_KEYS.indexOf(row.data_key)===-1) return;
+        var local = localStorage.getItem(row.data_key);
+        if(!local){ _safeSetLocal(row.data_key,row.data_value); }
+        else{
+          var localTs=_getLocalTs(row.data_key), cloudTs=new Date(row.updated_at).getTime();
+          if(cloudTs>localTs){ _safeSetLocal(row.data_key,row.data_value); }
+        }
+      });
+      if(typeof window.loadD==='function') window.loadD();
+      if(typeof window.updDash==='function') window.updDash();
+      _log('info','Pull complete —',(r.data||[]).length,'keys');
+    });
+}
+function _pullCoachView(){
+  return _sb.from('dojo_sync').select('user_id,data_key,data_value,updated_at')
+    .then(function(r){
+      if(r.error){ _log('error','Coach pull failed:',r.error.message); return; }
+      try{ localStorage.setItem('dojo_coach_view',JSON.stringify(r.data||[])); }catch(e){}
+    });
+}
+
+/* ── PUSH ───────────────────────────────────────────────────────── */
+function _push(key, value){
+  if(_isCoach) return;
+  if(!_session){ _queueOffline(key,value); return; }
+  if(SYNC_KEYS.indexOf(key)===-1) return;
+  _sb.from('dojo_sync').upsert({
+    user_id:_session.user.id, data_key:key, data_value:value,
+    updated_at:new Date().toISOString()
+  },{onConflict:'user_id,data_key'}).then(function(r){
+    if(r.error){ _queueOffline(key,value); }
+    else{ _updateLocalTs(key); }
+  });
+}
+
+/* ── OFFLINE QUEUE ──────────────────────────────────────────────── */
+function _queueOffline(key,value){
+  var q=_getQueue(); q[key]={value:value,ts:Date.now()};
+  try{ localStorage.setItem(OFFLINE_QUEUE_KEY,JSON.stringify(q)); }catch(e){}
+}
+function _flushOfflineQueue(){
+  if(!_session||_isCoach||!navigator.onLine) return;
+  var q=_getQueue(), keys=Object.keys(q); if(!keys.length) return;
+  keys.forEach(function(k){ _push(k,q[k].value); });
+  try{ localStorage.removeItem(OFFLINE_QUEUE_KEY); }catch(e){}
+}
+function _getQueue(){
+  try{ return JSON.parse(localStorage.getItem(OFFLINE_QUEUE_KEY)||'{}'); }catch(e){ return {}; }
+}
+
+/* ── MONKEY-PATCH SAVES ─────────────────────────────────────────── */
+var PATCH_MAP = {
+  'saveD':'dojo_v1','tfSaveData':'dojo_tf_v1','saveHistory':'dojo_history_v1',
+  'wpSave':'dojo_phys_v1','tlSaveTasks':'dojo_tl_tasks_v1','h30Save':'dojo_h30_v1',
+  'scSaveScenes':'dojo_scenes','rtSaveTapes':'dojo_tapes',
+  'neSaveContacts':'dojo_contacts','neSaveEvents':'dojo_events'
+};
+var DIRECT_KEYS = ['dojo_craft_scores','dojo_bm_v1','dojo_reel_notes'];
+
+function _patchSaveFunctions(){
+  if(_syncActive) return; _syncActive=true;
+  Object.keys(PATCH_MAP).forEach(function(fn){
+    if(typeof window[fn]!=='function') return;
+    var key=PATCH_MAP[fn]; _originals[fn]=window[fn];
+    window[fn]=function(data){ _originals[fn].call(this,data); _push(key,_parse(data)); };
+  });
+  var orig=localStorage.setItem.bind(localStorage); _originals['_setItem']=orig;
+  localStorage.setItem=function(key,value){
+    orig(key,value);
+    if(DIRECT_KEYS.indexOf(key)!==-1&&_session&&!_isCoach){
+      var p; try{ p=JSON.parse(value); }catch(e){ p=value; } _push(key,p);
+    }
+  };
+}
+function _unpatchSaveFunctions(){
+  if(!_syncActive) return; _syncActive=false;
+  Object.keys(_originals).forEach(function(fn){
+    if(fn==='_setItem'){ localStorage.setItem=_originals['_setItem']; }
+    else if(window[fn]){ window[fn]=_originals[fn]; }
+  });
+  _originals={};
+}
+
+/* ── AUTH ACTIONS ───────────────────────────────────────────────── */
+function signIn(email){
+  var pat=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  if(!pat.test(email)){ _toast('Invalid email address','error'); return; }
+  _sb.auth.signInWithOtp({email:email.trim().toLowerCase(),
+    options:{emailRedirectTo:window.location.href}
+  }).then(function(r){
+    if(r.error){ _toast('Login failed: '+r.error.message,'error'); }
+    else{ _renderAuthUI('magic-link-sent'); }
+  });
+}
+function signOut(){
+  _sb.auth.signOut().then(function(){ _onSignedOut(); });
+}
+
+/* ── PUBLIC API ─────────────────────────────────────────────────── */
+window.dojoSync = {
+  signIn:signIn, signOut:signOut,
+  pullAll:function(){ return _pullAll(); },
+  push:function(k,v){ _push(k,v); }
+};
+
+/* ── SETUP UI (no credentials yet) ─────────────────────────────── */
+function _renderSetupUI(){
+  var b=document.getElementById('syncBanner'); if(!b) return;
+  b.innerHTML=
+    '<span class="sync-txt" style="color:var(--gold);white-space:nowrap">☁ SETUP SYNC</span>'+
+    '<div style="display:flex;gap:5px;align-items:center;flex-wrap:wrap">'+
+      '<input id="syncUrl" class="sync-input" style="width:200px" placeholder="https://xxxx.supabase.co" autocomplete="off">'+
+      '<input id="syncKey" class="sync-input" style="width:200px" placeholder="anon key (eyJ...)" autocomplete="off" type="password">'+
+      '<button class="sync-btn" onclick="(function(){var u=document.getElementById(\'syncUrl\').value.trim();var k=document.getElementById(\'syncKey\').value.trim();if(!u||!k){return;}window._dojoSyncConnect(u,k);})()">CONNECT</button>'+
+      '<button class="sync-btn-sm" onclick="document.getElementById(\'syncBanner\').classList.remove(\'show\')" style="white-space:nowrap">✕ HIDE</button>'+
+    '</div>';
+  b.classList.add('show');
+}
+
+function _renderErrorUI(msg){
+  var b=document.getElementById('syncBanner'); if(!b) return;
+  b.innerHTML=
+    '<span class="sync-txt" style="color:var(--red)">⚠ '+_esc(msg)+'</span>'+
+    '<button class="sync-btn-sm" onclick="window._dojoSyncReset()" style="margin-left:8px">RESET</button>';
+  b.classList.add('show');
+}
+
+/* ── AUTH UI ────────────────────────────────────────────────────── */
+function _renderAuthUI(state){
+  var b=document.getElementById('syncBanner'); if(!b) return;
+  if(state==='logged-out'){
+    b.innerHTML=
+      '<span class="sync-txt">☁ CLOUD SYNC</span>'+
+      '<div style="display:flex;gap:6px;align-items:center">'+
+        '<input id="syncEmail" type="email" class="sync-input" placeholder="your@email.com" autocomplete="email">'+
+        '<button class="sync-btn" onclick="(function(){var e=document.getElementById(\'syncEmail\');if(e)window.dojoSync.signIn(e.value);})()">SEND LINK</button>'+
+        '<button class="sync-btn-sm" onclick="window._dojoSyncReset()" title="Change credentials">⚙</button>'+
+      '</div>';
+    b.classList.add('show'); return;
+  }
+  if(state==='magic-link-sent'){
+    b.innerHTML='<span class="sync-txt" style="color:var(--grn)">✓ CHECK YOUR EMAIL — tap the link to sign in</span>';
+    return;
+  }
+  if(state==='logged-in'){
+    var user=_session&&_session.user, email=user?_esc(user.email):'';
+    var role=_isCoach?'👁 COACH VIEW':'✓ SYNCED';
+    var col=_isCoach?'var(--pur)':'var(--grn)';
+    b.innerHTML=
+      '<span class="sync-txt" style="color:'+col+'">'+role+' · '+email+'</span>'+
+      '<div style="display:flex;gap:6px;align-items:center">'+
+        '<button class="sync-btn-sm" onclick="window.dojoSync.pullAll()">↓ PULL</button>'+
+        '<button class="sync-btn-sm" onclick="window.dojoSync.signOut()">SIGN OUT</button>'+
+      '</div>';
+    b.classList.add('show');
+    if(_isCoach) _applyCoachReadOnly();
+    return;
+  }
+}
+
+/* ── CONNECT & RESET (callable from banner buttons) ─────────────── */
+window._dojoSyncConnect = function(url, key){
+  saveCfg(url, key);
+  _loadSDK(function(err){
+    if(err){ _renderErrorUI(err.message); return; }
+    _startSync(url, key);
+  });
+};
+window._dojoSyncReset = function(){
+  clearCfg();
+  if(_sb){ try{ _sb.auth.signOut(); }catch(e){} }
+  _sb=null; _session=null; _syncActive=false;
+  _unpatchSaveFunctions();
+  _renderSetupUI();
+};
+
+/* ── COACH READ-ONLY ────────────────────────────────────────────── */
+function _applyCoachReadOnly(){
+  document.querySelectorAll('input,textarea,select,button:not(.sync-btn-sm)').forEach(function(el){
+    el.disabled=true; el.style.opacity='0.5'; el.style.cursor='not-allowed';
+  });
+}
+
+/* ── UTILS ──────────────────────────────────────────────────────── */
+function _safeSetLocal(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(e){} }
+function _parse(d){ if(!d||typeof d==='object') return d; try{ return JSON.parse(d); }catch(e){ return d; } }
+function _getLocalTs(k){ try{ return parseInt(localStorage.getItem('__ts_'+k)||'0',10); }catch(e){ return 0; } }
+function _updateLocalTs(k){ try{ localStorage.setItem('__ts_'+k,Date.now().toString()); }catch(e){} }
+function _esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function _toast(msg,type){
+  var t=document.getElementById('toast'); if(!t) return;
+  var c={error:'var(--red)',info:'var(--gold)',success:'var(--grn)'};
+  t.style.background=c[type]||c.info; t.textContent=msg;
+  t.classList.add('on'); setTimeout(function(){ t.classList.remove('on'); },3000);
+}
+function _log(){ var a=Array.prototype.slice.call(arguments); console.log.apply(console,['[DOJO SYNC]'].concat(a)); }
+
+/* ── BOOT ───────────────────────────────────────────────────────── */
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
+
+})();
 </script>
-<script src="supabase-sync.js"></script>
 
 </body>
 </html>
