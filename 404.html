@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DOJO OS</title>
+<script>
+  /* GitHub Pages SPA fallback.
+     Converts  /repo/index.html?goto=s21
+     back to   /repo/?goto=s21
+     so the service worker and app can handle it.             */
+  (function(){
+    var seg = 1; /* set to 0 if deploying to root, 1 if to a /repo subpath */
+    var l = window.location;
+    var path = l.pathname.slice(1).split('/').slice(seg).join('/');
+    var query = l.search ? l.search.slice(1) : '';
+    var hash  = l.hash ? l.hash.slice(1) : '';
+    var redirect = l.protocol + '//' + l.hostname +
+      (l.port ? ':' + l.port : '') + l.pathname.split('/').slice(0, 1 + seg).join('/') + '/' +
+      (path ? '?p=/' + path : '') +
+      (query ? (path ? '&' : '?') + query : '') +
+      (hash  ? '#' + hash : '');
+    window.location.replace(redirect);
+  })();
+</script>
+</head>
+<body></body>
+</html>
