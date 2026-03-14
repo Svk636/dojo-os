@@ -6,8 +6,8 @@
    Bump SW_VERSION on every deploy to trigger the update banner.
    ============================================================ */
 
-const SW_VERSION  = '3.2';
-const CACHE_NAME  = 'dojo-os-v' + SW_VERSION;
+const SW_VERSION  = '4.0';
+const CACHE_NAME  = 'dojo-os-4' + SW_VERSION;
 
 /* Assets to pre-cache on install — the entire app shell.
    index.html is cached as both './' and './index.html' so either
