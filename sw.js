@@ -6,7 +6,7 @@
    Bump SW_VERSION on every deploy to trigger the update banner.
    ============================================================ */
 
-const SW_VERSION  = '3.2';
+const SW_VERSION  = '3.3';
 const CACHE_NAME  = 'dojo-os-v' + SW_VERSION;
 
 /* Assets to pre-cache on install — the entire app shell.
