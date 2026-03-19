@@ -4650,6 +4650,7 @@ var HBLKS=[
     '😴 Eyes closed · Breathing slowed · Sleep begins by 21:30'
   ]}
 ];
+window.HBLKS = HBLKS; /* expose to all script scopes */
 function buildHabits(){
   var el=g('hblocks');if(!el)return;var h='';
   HBLKS.forEach(function(blk){
@@ -8659,7 +8660,7 @@ window.neSetFollowup=neSetFollowup; window.neFuMarkDone=neFuMarkDone; window.neF
     <!-- HABIT TICK — tick a single habit right now -->
     <div class="qc-form" id="qcf-habittick">
       <div class="ccc-section-lbl">✅ TICK A HABIT — DONE RIGHT NOW WITHOUT NAVIGATING</div>
-      <div id="qcht-blocks" style="margin-top:8px"></div>
+      <div id="qcht-blocks" style="margin-top:8px;max-height:55vh;overflow-y:auto;-webkit-overflow-scrolling:touch"></div>
       <div class="qc-saved-hint" id="qcht-status">Loading habits…</div>
     </div>
 
@@ -12267,7 +12268,7 @@ window.qcSwitch = function(btn, type){
     }, 80);
   }
   /* Type-specific hydration */
-  if(type === 'habittick') { qcBuildHabitTick(); }
+  if(type === 'habittick') { setTimeout(function(){ qcBuildHabitTick(); }, 30); }
   if(type === 'reflect')   { try{ qcBuildSatRow(); qcReflType(window._qcReflType||'morn'); }catch(e){} }
   if(type === 'careerlog') { if(window.qcSaveCareerLog) window.qcSaveCareerLog._listed = false; }
   if(type === 'body'){
@@ -12903,13 +12904,13 @@ window.fabToggle = function(){
     var activeChip = document.querySelector('.qc-chip.on');
     var activeType = activeChip ? activeChip.dataset.qc : 'thought';
     if(activeType === 'habittick'){
-      qcBuildHabitTick();
+      setTimeout(function(){ qcBuildHabitTick(); }, 30);
     } else {
       qcRenderList('thought');
       var inp = qg('qct-thought');
       if(inp) inp.focus();
     }
-  }, 50);
+  }, 80);
 };
 
 })();
